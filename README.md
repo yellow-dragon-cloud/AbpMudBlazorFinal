@@ -38,7 +38,6 @@ Create the following files in this folder:
 
 <details><summary>MudPermissionManagementModal.razor</summary>
            
-           
 <p>
            
 ```razor
@@ -129,7 +128,10 @@ Create the following files in this folder:
 </p>
 </details>
            
-`MudPermissionManagementModal.razor.cs`
+<details><summary>MudPermissionManagementModal.razor.cs</summary>
+           
+<p>
+           
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -346,6 +348,9 @@ public partial class MudPermissionManagementModal
     }
 }
 ```
+
+</p>       
+</details>
 
 `MudRoleManagement.razor`
 ```razor
