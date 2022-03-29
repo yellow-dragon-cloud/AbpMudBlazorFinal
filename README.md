@@ -36,9 +36,7 @@ Create the following files in this folder:
 
 ## 18. Modify These Files' Content As Shown Below
 
-<details><summary>MudPermissionManagementModal.razor</summary>
-           
-<p>
+`MudPermissionManagementModal.razor`
            
 ```razor
 @using Microsoft.Extensions.Localization
@@ -124,13 +122,11 @@ Create the following files in this folder:
     </DialogActions>
 </MudDialog>
 ```
+
+***
+
            
-</p>
-</details>
-           
-<details><summary>MudPermissionManagementModal.razor.cs</summary>
-           
-<p>
+`MudPermissionManagementModal.razor.cs`
            
 ```csharp
 using System;
@@ -349,8 +345,8 @@ public partial class MudPermissionManagementModal
 }
 ```
 
-</p>       
-</details>
+***
+
 
 `MudRoleManagement.razor`
 ```razor
@@ -542,6 +538,9 @@ public partial class MudPermissionManagementModal
 }
 ```
 
+***
+
+
 `MudRoleManagement.razor.cs`
 ```csharp
 using System.Threading.Tasks;
@@ -653,6 +652,9 @@ public partial class MudRoleManagement
     }
 }
 ```
+
+***
+
 
 `MudUserManagement.razor`
 ```razor
@@ -948,6 +950,9 @@ public partial class MudRoleManagement
 }
 ```
 
+***
+
+
 `MudUserManagement.razor.cs`
 ```csharp
 using System.Linq;
@@ -1072,6 +1077,9 @@ public partial class MudUserManagement
     }
 }
 ```
+
+***
+
 
 ## Screenshots
 
