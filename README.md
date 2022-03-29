@@ -37,7 +37,10 @@ Create the following files in this folder:
 ## 18. Modify These Files' Content As Shown Below
 
 <details><summary>MudPermissionManagementModal.razor</summary>
+           
+           
 <p>
+           
 ```razor
 @using Microsoft.Extensions.Localization
 @using Volo.Abp.PermissionManagement.Blazor.Components
@@ -122,6 +125,7 @@ Create the following files in this folder:
     </DialogActions>
 </MudDialog>
 ```
+           
 </p>
 </details>
            
