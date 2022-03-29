@@ -1,13 +1,12 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29020.237
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.Domain", "src\Acme.BookStore.Domain\Acme.BookStore.Domain.csproj", "{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.AspNetCore.Components.Web.BasicTheme", "packages\Volo.Abp.AspNetCore.Components.Web.BasicTheme\\Volo.Abp.AspNetCore.Components.Web.BasicTheme.csproj", "{a1f21aa3-0b37-4f2d-b2ac-d7ac41b73ac7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.AspNetCore.Components.Web.BasicTheme", "packages\Volo.Abp.AspNetCore.Components.Web.BasicTheme\Volo.Abp.AspNetCore.Components.Web.BasicTheme.csproj", "{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme", "packages\Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme\\Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme.csproj", "{0dddf7c8-bfe5-42b7-881c-a3e69fa04062}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme", "packages\Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme\Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme.csproj", "{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.Application", "src\Acme.BookStore.Application\Acme.BookStore.Application.csproj", "{1A94A50E-06DC-43C1-80B5-B662820EC3EB}"
 EndProject
@@ -47,18 +46,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{a1f21aa3-0b37-4f2d-b2ac-d7ac41b73ac7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{a1f21aa3-0b37-4f2d-b2ac-d7ac41b73ac7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{a1f21aa3-0b37-4f2d-b2ac-d7ac41b73ac7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{a1f21aa3-0b37-4f2d-b2ac-d7ac41b73ac7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0dddf7c8-bfe5-42b7-881c-a3e69fa04062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0dddf7c8-bfe5-42b7-881c-a3e69fa04062}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0dddf7c8-bfe5-42b7-881c-a3e69fa04062}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0dddf7c8-bfe5-42b7-881c-a3e69fa04062}.Release|Any CPU.Build.0 = Release|Any CPU
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A94A50E-06DC-43C1-80B5-B662820EC3EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A94A50E-06DC-43C1-80B5-B662820EC3EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A94A50E-06DC-43C1-80B5-B662820EC3EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -120,9 +119,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{a1f21aa3-0b37-4f2d-b2ac-d7ac41b73ac7} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
-		{0dddf7c8-bfe5-42b7-881c-a3e69fa04062} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{1A94A50E-06DC-43C1-80B5-B662820EC3EB} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{50B2631D-129C-47B3-A587-029CCD6099BC} = {04DBDB01-70F4-4E06-B468-8F87850B22BE}
 		{E3444355-D47E-431E-BDD0-DD3A7113B2AE} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
