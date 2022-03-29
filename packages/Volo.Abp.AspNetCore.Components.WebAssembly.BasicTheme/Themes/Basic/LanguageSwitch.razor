@@ -3,20 +3,26 @@
 @using System.Collections.Immutable
 @inject ILanguageProvider LanguageProvider
 @inject IJSRuntime JsRuntime
-@if (_otherLanguages != null && _otherLanguages.Any())
+
+@if (_otherLanguages is not null && _otherLanguages.Any())
 {
-    <BarDropdown>
-        <BarDropdownToggle>
-            @_currentLanguage.DisplayName
-        </BarDropdownToggle>
-        <BarDropdownMenu RightAligned="true">
+    <MudMenu Color="MudBlazor.Color.Inherit" Direction="MudBlazor.Direction.Left" OffsetX="true" Dense="true">
+        <ActivatorContent>
+            <MudChip Color="MudBlazor.Color.Primary">
+                @_currentLanguage.DisplayName
+            </MudChip>
+        </ActivatorContent>
+        <ChildContent>
             @foreach (var language in _otherLanguages)
             {
-                <BarDropdownItem Clicked="() => ChangeLanguageAsync(language)">@language.DisplayName</BarDropdownItem>
+                <MudMenuItem OnClick="@(async () => await ChangeLanguageAsync(language))">
+                    @language.DisplayName
+                </MudMenuItem>
             }
-        </BarDropdownMenu>
-    </BarDropdown>
+        </ChildContent>
+    </MudMenu>
 }
+
 @code {
     private IReadOnlyList<LanguageInfo> _otherLanguages;
     private LanguageInfo _currentLanguage;
@@ -25,30 +31,17 @@
     {
         var selectedLanguageName = await JsRuntime.InvokeAsync<string>(
             "localStorage.getItem",
-            "Abp.SelectedLanguage"
-            );
+            "Abp.SelectedLanguage");
 
         _otherLanguages = await LanguageProvider.GetLanguagesAsync();
 
-        if (!_otherLanguages.Any())
-        {
-            return;
-        }
+        if (!_otherLanguages.Any()) return;
 
         if (!selectedLanguageName.IsNullOrWhiteSpace())
-        {
             _currentLanguage = _otherLanguages.FirstOrDefault(l => l.UiCultureName == selectedLanguageName);
-        }
 
-        if (_currentLanguage == null)
-        {
-            _currentLanguage = _otherLanguages.FirstOrDefault(l => l.UiCultureName == CultureInfo.CurrentUICulture.Name);
-        }
-
-        if (_currentLanguage == null)
-        {
-            _currentLanguage = _otherLanguages.FirstOrDefault();
-        }
+        _currentLanguage ??= _otherLanguages.FirstOrDefault(l => l.UiCultureName == CultureInfo.CurrentUICulture.Name);
+        _currentLanguage ??= _otherLanguages.FirstOrDefault();
 
         _otherLanguages = _otherLanguages.Where(l => l != _currentLanguage).ToImmutableList();
     }
@@ -57,13 +50,7 @@
     {
         await JsRuntime.InvokeVoidAsync(
             "localStorage.setItem",
-            "Abp.SelectedLanguage", language.UiCultureName
-            );
-
-        await JsRuntime.InvokeVoidAsync(
-            "localStorage.setItem",
-            "Abp.IsRtl", CultureInfo.GetCultureInfo(language.UiCultureName).TextInfo.IsRightToLeft
-            );
+            "Abp.SelectedLanguage", language.UiCultureName);
 
         await JsRuntime.InvokeVoidAsync("location.reload");
     }
