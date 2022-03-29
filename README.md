@@ -36,7 +36,7 @@ Create the following files in this folder:
 
 ## 18. Modify These Files' Content As Shown Below
 
-`MudPermissionManagementModal.razor`
+1. `MudPermissionManagementModal.razor`
            
 ```razor
 @using Microsoft.Extensions.Localization
@@ -126,7 +126,7 @@ Create the following files in this folder:
 ***
 
            
-`MudPermissionManagementModal.razor.cs`
+2. `MudPermissionManagementModal.razor.cs`
            
 ```csharp
 using System;
@@ -348,7 +348,7 @@ public partial class MudPermissionManagementModal
 ***
 
 
-`MudRoleManagement.razor`
+3. `MudRoleManagement.razor`
 ```razor
 @using MudBlazor;
 @using Blazorise
@@ -541,7 +541,7 @@ public partial class MudPermissionManagementModal
 ***
 
 
-`MudRoleManagement.razor.cs`
+4. `MudRoleManagement.razor.cs`
 ```csharp
 using System.Threading.Tasks;
 using MudBlazor;
@@ -656,7 +656,7 @@ public partial class MudRoleManagement
 ***
 
 
-`MudUserManagement.razor`
+5. `MudUserManagement.razor`
 ```razor
 @using Microsoft.AspNetCore.Authorization
 @using Volo.Abp.DependencyInjection
@@ -953,7 +953,7 @@ public partial class MudRoleManagement
 ***
 
 
-`MudUserManagement.razor.cs`
+6. `MudUserManagement.razor.cs`
 ```csharp
 using System.Linq;
 using System.Threading.Tasks;
