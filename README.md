@@ -27,12 +27,12 @@ You must complete the steps in [Part 1](https://github.com/yellow-dragon-cloud/A
 Create `Identity` folder under `Acme.BookStore.Blazor/Pages/`.
 
 Create the following files in this folder:
-- `MudPermissionManagementModal.razor`
-- `MudPermissionManagementModal.razor.cs`
-- `MudRoleManagement.razor`
-- `MudRoleManagement.razor.cs`
-- `MudUserManagement.razor`
-- `MudUserManagement.razor.cs`
+1. `MudPermissionManagementModal.razor`
+2. `MudPermissionManagementModal.razor.cs`
+3. `MudRoleManagement.razor`
+4. `MudRoleManagement.razor.cs`
+5. `MudUserManagement.razor`
+6. `MudUserManagement.razor.cs`
 
 ## 18. Modify These Files' Content As Shown Below
 
