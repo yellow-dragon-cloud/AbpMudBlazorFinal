@@ -122,6 +122,7 @@ Create the following files in this folder:
     </DialogActions>
 </MudDialog>
 ```
+</p>
 </details>
            
 `MudPermissionManagementModal.razor.cs`
