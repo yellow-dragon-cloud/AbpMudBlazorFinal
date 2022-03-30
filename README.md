@@ -1074,9 +1074,6 @@ public partial class MudUserManagement
 ![image](images/screenshot6.png)
 
 
+## Source Code
 
-
-
-
-
-
+The source code of this project is [available on Github](https://github.com/yellow-dragon-cloud/AbpMudBlazorFinal)
