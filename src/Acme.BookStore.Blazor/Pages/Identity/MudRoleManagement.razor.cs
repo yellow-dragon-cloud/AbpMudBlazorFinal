@@ -96,7 +96,7 @@ public partial class MudRoleManagement
         await _permissionManagementModal.OpenDialogAsync(PermissionProviderName, entity.Name);
     }
 
-    protected static DialogOptions DialogOptions
+    protected virtual DialogOptions DialogOptions
     {
         get => new()
         {

@@ -109,7 +109,7 @@ public partial class MudUserManagement
             PermissionProviderName, entity.Id.ToString());
     }
 
-    protected static DialogOptions DialogOptions
+    protected virtual DialogOptions DialogOptions
     {
         get => new()
         {
