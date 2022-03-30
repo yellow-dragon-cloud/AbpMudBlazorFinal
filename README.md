@@ -634,7 +634,7 @@ public partial class MudRoleManagement
         await _permissionManagementModal.OpenDialogAsync(PermissionProviderName, entity.Name);
     }
 
-    protected static DialogOptions DialogOptions
+    protected virtual DialogOptions DialogOptions
     {
         get => new()
         {
@@ -1052,7 +1052,7 @@ public partial class MudUserManagement
             PermissionProviderName, entity.Id.ToString());
     }
 
-    protected static DialogOptions DialogOptions
+    protected virtual DialogOptions DialogOptions
     {
         get => new()
         {
