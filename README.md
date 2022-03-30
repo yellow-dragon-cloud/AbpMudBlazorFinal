@@ -372,77 +372,70 @@ public partial class MudPermissionManagementModal
 
 @inherits RoleManagement
 
-<MudCard Elevation="8">
-    <MudCardHeader>
-        @* ************************* PAGE HEADER ************************* *@
-        <MudGrid>
-            <MudItem>
-                <MudText Typo="Typo.h5">@L["Roles"]</MudText>
-            </MudItem>
-            <MudSpacer />
-            <MudItem>
-                <MudButton Color="MudBlazor.Color.Primary"
-                           Variant="Variant.Outlined"
-                           Disabled="!HasCreatePermission"
-                           OnClick="OpenCreateModalAsync">
-                    @L["NewRole"]
-                </MudButton>
-            </MudItem>
-        </MudGrid>
-    </MudCardHeader>
-    <MudCardContent>
-        @* ************************* DATA GRID ************************* *@
-        <MudDataGrid T="IdentityRoleDto"
-                     @ref="@_dataGrid"
-                     Striped="true"
-                     ServerData="LoadServerData">
-            <Columns>
-                <MudBlazor.Column T="IdentityRoleDto"
-                                  Field="@nameof(IdentityRoleDto.Id)"
-                                  Title="@L["Actions"]">
-                    <CellTemplate>
-                        @if (HasUpdatePermission)
-                        {
-                            <MudIconButton Icon="fas fa-edit" 
-                                           OnClick="@(async (_) => { await OpenEditModalAsync(context); })"
-                                           Size="MudBlazor.Size.Small" />
-                            <MudIconButton Icon="fas fa-user-lock" 
-                                           OnClick="@(async (_) => { await OpenPermissionsModalAsync(context); })"
-                                           Size="MudBlazor.Size.Small" />
-                        }
-                        @if (HasDeletePermission)
-                        {   
-                            <MudIconButton Icon="fas fa-trash" 
-                                           OnClick="@(async (_) => { await DeleteEntityAsync(context);} )"
-                                           Size="MudBlazor.Size.Small" />
-                        }
-                    </CellTemplate>
-                </MudBlazor.Column>
-                <MudBlazor.Column T="IdentityRoleDto"
-                                  Field="@nameof(IdentityRoleDto.Name)"
-                                  Title=@L["Name"] />
-                <MudBlazor.Column T="IdentityRoleDto"
-                                  Field="@nameof(IdentityRoleDto.Name)"
-                                  Title="">
-                    <CellTemplate>
-                        @if (context.IsDefault)
-                        {
-                            <MudChip Color="MudBlazor.Color.Success">
-                                @L["DisplayName:IsDefault"]
-                            </MudChip>
-                        }
-                        @if (context.IsPublic)
-                        {
-                            <MudChip Color="MudBlazor.Color.Info">
-                                @L["DisplayName:IsPublic"]
-                            </MudChip>
-                        }
-                    </CellTemplate>
-                </MudBlazor.Column>
-            </Columns>
-        </MudDataGrid>
-    </MudCardContent>
-</MudCard>
+@* ************************* DATA GRID ************************* *@
+<MudDataGrid T="IdentityRoleDto"
+             @ref="@_dataGrid"
+             Elevation="8"
+             Hideable="true"
+             Striped="true"
+             ServerData="LoadServerData">
+    <ToolBarContent>
+        <MudText Typo="Typo.h5">@L["Roles"]</MudText>
+        <MudSpacer />
+        <MudButton Color="MudBlazor.Color.Primary"
+                   Variant="Variant.Outlined"
+                   Disabled="!HasCreatePermission"
+                   OnClick="OpenCreateModalAsync">
+            @L["NewRole"]
+        </MudButton>
+    </ToolBarContent>
+    <Columns>
+        <MudBlazor.Column T="IdentityRoleDto"
+                          Field="@nameof(IdentityRoleDto.Id)"
+                          Hideable="false"
+                          Title="@L["Actions"]">
+            <CellTemplate>
+                @if (HasUpdatePermission)
+                {
+                    <MudIconButton Icon="fas fa-edit" 
+                                   OnClick="@(async (_) => { await OpenEditModalAsync(context.Item); })"
+                                   Size="MudBlazor.Size.Small" />
+                    <MudIconButton Icon="fas fa-user-lock" 
+                                   OnClick="@(async (_) => { await OpenPermissionsModalAsync(context.Item); })"
+                                   Size="MudBlazor.Size.Small" />
+                }
+                @if (HasDeletePermission)
+                {   
+                    <MudIconButton Icon="fas fa-trash" 
+                                   OnClick="@(async (_) => { await DeleteEntityAsync(context.Item);} )"
+                                   Size="MudBlazor.Size.Small" />
+                }
+            </CellTemplate>
+        </MudBlazor.Column>
+        <MudBlazor.Column T="IdentityRoleDto"
+                          Field="@nameof(IdentityRoleDto.Name)"
+                          Hideable="false"
+                          Title=@L["Name"] />
+        <MudBlazor.Column T="IdentityRoleDto"
+                          Field="@nameof(IdentityRoleDto.Name)"
+                          Title="">
+            <CellTemplate>
+                @if (context.Item.IsDefault)
+                {
+                    <MudChip Color="MudBlazor.Color.Success">
+                        @L["DisplayName:IsDefault"]
+                    </MudChip>
+                }
+                @if (context.Item.IsPublic)
+                {
+                    <MudChip Color="MudBlazor.Color.Info">
+                        @L["DisplayName:IsPublic"]
+                    </MudChip>
+                }
+            </CellTemplate>
+        </MudBlazor.Column>
+    </Columns>
+</MudDataGrid>
 
 @* ************************* CREATE MODAL ************************* *@
 @if (HasCreatePermission)
@@ -672,65 +665,58 @@ public partial class MudRoleManagement
 
 @inherits UserManagement
 
-<MudCard Elevation="8">
-    <MudCardHeader>
-        @* ************************* PAGE HEADER ************************* *@
-        <MudGrid>
-            <MudItem>
-                <MudText Typo="Typo.h5">@L["Users"]</MudText>
-            </MudItem>
-            <MudSpacer />
-            <MudItem>
-                <MudButton Color="MudBlazor.Color.Primary"
-                           Variant="Variant.Outlined"
-                           Disabled="!HasCreatePermission"
-                           OnClick="OpenCreateModalAsync">
-                    @L["NewUser"]
-                </MudButton>
-            </MudItem>
-        </MudGrid>
-    </MudCardHeader>
-    <MudCardContent>
-        @* ************************* DATA GRID ************************* *@
-        <MudDataGrid T="IdentityUserDto"
-                     @ref="@_dataGrid"
-                     Striped="true"
-                     ServerData="LoadServerData">
-            <Columns>
-                <MudBlazor.Column T="IdentityUserDto"
-                                  Field="@nameof(IdentityUserDto.Id)"
-                                  Title=@L["Actions"]>
-                    <CellTemplate>
-                        @if (HasUpdatePermission)
-                        {
-                            <MudIconButton Icon="fas fa-edit"
-                                           OnClick="@(async (_) => { await OpenEditModalAsync(context); })"
-                                           Size="MudBlazor.Size.Small" />
-                            <MudIconButton Icon="fas fa-user-lock"
-                                           OnClick="@(async (_) => { await OpenPermissionsModalAsync(context); })"
-                                           Size="MudBlazor.Size.Small" />
-                        }
-                        @if (HasDeletePermission)
-                        {
-                            <MudIconButton Icon="fas fa-trash"
-                                           OnClick="@(async (_) => { await DeleteEntityAsync(context);} )"
-                                           Size="MudBlazor.Size.Small" />
-                        }
-                    </CellTemplate>
-                </MudBlazor.Column>
-                <MudBlazor.Column T="IdentityUserDto"
-                                  Field="@nameof(IdentityUserDto.Name)"
-                                  Title=@L["Name"] />
-                <MudBlazor.Column T="IdentityUserDto"
-                                  Field="@nameof(IdentityUserDto.Email)"
-                                  Title=@L["Email"] />
-                <MudBlazor.Column T="IdentityUserDto"
-                                  Field="@nameof(IdentityUserDto.PhoneNumber)"
-                                  Title=@L["PhoneNumber"] />
-            </Columns>
-        </MudDataGrid>
-    </MudCardContent>
-</MudCard>
+@* ************************* DATA GRID ************************* *@
+<MudDataGrid T="IdentityUserDto"
+             @ref="@_dataGrid"
+             Striped="true"
+             Elevation="8"
+             Hideable="true"
+             ServerData="LoadServerData">
+    <ToolBarContent>
+        <MudText Typo="Typo.h5">@L["Users"]</MudText>
+        <MudSpacer />
+        <MudButton Color="MudBlazor.Color.Primary"
+                   Variant="Variant.Outlined"
+                   Disabled="!HasCreatePermission"
+                   OnClick="OpenCreateModalAsync">
+            @L["NewUser"]
+        </MudButton>
+    </ToolBarContent>
+    <Columns>
+        <MudBlazor.Column T="IdentityUserDto"
+                          Field="@nameof(IdentityUserDto.Id)"
+                          Hideable="false"
+                          Title=@L["Actions"]>
+            <CellTemplate>
+                @if (HasUpdatePermission)
+                {
+                    <MudIconButton Icon="fas fa-edit"
+                                   OnClick="@(async (_) => { await OpenEditModalAsync(context.Item); })"
+                                   Size="MudBlazor.Size.Small" />
+                    <MudIconButton Icon="fas fa-user-lock"
+                                   OnClick="@(async (_) => { await OpenPermissionsModalAsync(context.Item); })"
+                                   Size="MudBlazor.Size.Small" />
+                }
+                @if (HasDeletePermission)
+                {
+                    <MudIconButton Icon="fas fa-trash"
+                                   OnClick="@(async (_) => { await DeleteEntityAsync(context.Item);} )"
+                                   Size="MudBlazor.Size.Small" />
+                }
+            </CellTemplate>
+        </MudBlazor.Column>
+        <MudBlazor.Column T="IdentityUserDto"
+                          Field="@nameof(IdentityUserDto.Name)"
+                          Hideable="false"
+                          Title=@L["Name"] />
+        <MudBlazor.Column T="IdentityUserDto"
+                          Field="@nameof(IdentityUserDto.Email)"
+                          Title=@L["Email"] />
+        <MudBlazor.Column T="IdentityUserDto"
+                          Field="@nameof(IdentityUserDto.PhoneNumber)"
+                          Title=@L["PhoneNumber"] />
+    </Columns>
+</MudDataGrid>
 
 @* ************************* CREATE MODAL ************************* *@
 @if (HasCreatePermission)
