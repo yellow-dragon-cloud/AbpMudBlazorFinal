@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this part, I will show you how to customize/override pre-built Blazor pages of [Idendity Module](https://docs.abp.io/en/abp/latest/Modules/Identity) using [MudBlazor](https://www.mudblazor.com/) components. I assume that Tenant and Setting management pages are rarely used by end-users, so these modules are not covered in this sample to keep it short. You can customize every page using the principles shown here. All you need to do is:
+In this part, I will show you how to customize/override pre-built Blazor pages of the [Identity Module](https://docs.abp.io/en/abp/latest/Modules/Identity) using [MudBlazor](https://www.mudblazor.com/) components. I assume that Tenant and Setting management pages are rarely used by end-users, so these modules are not covered in this sample to keep it short. You can customize every page using the principles shown here. All you need to do is:
 1. Deriving a class that inherits the class you want to override
 2. And adding the following attributes to the derived class:
 ```razor
