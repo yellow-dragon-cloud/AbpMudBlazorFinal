@@ -1,40 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Acme.BookStore.Authors;
 using Acme.BookStore.Permissions;
-using Blazorise;
-using Blazorise.DataGrid;
 using Microsoft.AspNetCore.Authorization;
-using Volo.Abp.Application.Dtos;
+using MudBlazor;
 
 namespace Acme.BookStore.Blazor.Pages
 {
     public partial class Authors
     {
-        private IReadOnlyList<AuthorDto> AuthorList { get; set; }
-
-        private int PageSize { get; } = LimitedResultRequestDto.DefaultMaxResultCount;
-        private int CurrentPage { get; set; }
-        private string CurrentSorting { get; set; }
-        private int TotalCount { get; set; }
+        private async Task<GridData<AuthorDto>> LoadServerData(GridState<AuthorDto> state)
+        {
+            var input = new GetAuthorListDto
+            {
+                Filter = "",
+                MaxResultCount = state.PageSize,
+                SkipCount = state.Page * state.PageSize
+            };
+            var result = await AuthorAppService.GetListAsync(input);
+            return new()
+            {
+                Items = result.Items,
+                TotalItems = (int)result.TotalCount
+            };
+        }
 
         private bool CanCreateAuthor { get; set; }
         private bool CanEditAuthor { get; set; }
         private bool CanDeleteAuthor { get; set; }
 
+        private MudDataGrid<AuthorDto> _authorList;
+
         private CreateAuthorDto NewAuthor { get; set; }
+
+        private bool _createAuthorDialogVisible;
+        private bool _editAuthorDialogVisible;
+
+        private MudForm _createForm;
+        private MudForm _editForm;
 
         private Guid EditingAuthorId { get; set; }
         private UpdateAuthorDto EditingAuthor { get; set; }
-
-        private Modal CreateAuthorModal { get; set; }
-        private Modal EditAuthorModal { get; set; }
-
-        private Validations CreateValidationsRef;
-
-        private Validations EditValidationsRef;
 
         public Authors()
         {
@@ -45,7 +51,6 @@ namespace Acme.BookStore.Blazor.Pages
         protected override async Task OnInitializedAsync()
         {
             await SetPermissionsAsync();
-            await GetAuthorsAsync();
         }
 
         private async Task SetPermissionsAsync()
@@ -60,54 +65,22 @@ namespace Acme.BookStore.Blazor.Pages
                 .IsGrantedAsync(BookStorePermissions.Authors.Delete);
         }
 
-        private async Task GetAuthorsAsync()
-        {
-            var result = await AuthorAppService.GetListAsync(
-                new GetAuthorListDto
-                {
-                    MaxResultCount = PageSize,
-                    SkipCount = CurrentPage * PageSize,
-                    Sorting = CurrentSorting
-                }
-            );
-
-            AuthorList = result.Items;
-            TotalCount = (int)result.TotalCount;
-        }
-
-        private async Task OnDataGridReadAsync(DataGridReadDataEventArgs<AuthorDto> e)
-        {
-            CurrentSorting = e.Columns
-                .Where(c => c.Direction != SortDirection.None)
-                .Select(c => c.Field + (c.Direction == SortDirection.Descending ? " DESC" : ""))
-                .JoinAsString(",");
-            CurrentPage = e.Page - 1;
-
-            await GetAuthorsAsync();
-
-            await InvokeAsync(StateHasChanged);
-        }
-
         private void OpenCreateAuthorModal()
         {
-            CreateValidationsRef.ClearAll();
-
             NewAuthor = new CreateAuthorDto();
-            CreateAuthorModal.Show();
+            _createAuthorDialogVisible = true;
         }
 
         private void CloseCreateAuthorModal()
         {
-            CreateAuthorModal.Hide();
+            _createAuthorDialogVisible = false;
         }
 
         private void OpenEditAuthorModal(AuthorDto author)
         {
-            EditValidationsRef.ClearAll();
-
             EditingAuthorId = author.Id;
             EditingAuthor = ObjectMapper.Map<AuthorDto, UpdateAuthorDto>(author);
-            EditAuthorModal.Show();
+            _editAuthorDialogVisible = true;
         }
 
         private async Task DeleteAuthorAsync(AuthorDto author)
@@ -119,31 +92,31 @@ namespace Acme.BookStore.Blazor.Pages
             }
 
             await AuthorAppService.DeleteAsync(author.Id);
-            await GetAuthorsAsync();
+            await _authorList.ReloadServerData();
         }
 
         private void CloseEditAuthorModal()
         {
-            EditAuthorModal.Hide();
+            _editAuthorDialogVisible = false;
         }
 
         private async Task CreateAuthorAsync()
         {
-            if (await CreateValidationsRef.ValidateAll())
+            if (_createForm.IsValid)
             {
                 await AuthorAppService.CreateAsync(NewAuthor);
-                await GetAuthorsAsync();
-                await CreateAuthorModal.Hide();
+                _createAuthorDialogVisible = false;
+                await _authorList.ReloadServerData();
             }
         }
 
         private async Task UpdateAuthorAsync()
         {
-            if (await EditValidationsRef.ValidateAll())
+            if (_editForm.IsValid)
             {
                 await AuthorAppService.UpdateAsync(EditingAuthorId, EditingAuthor);
-                await GetAuthorsAsync();
-                await EditAuthorModal.Hide();
+                _editAuthorDialogVisible = false;
+                await _authorList.ReloadServerData();
             }
         }
     }

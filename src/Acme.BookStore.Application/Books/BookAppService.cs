@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Dynamic.Core;
+using System.Linq;
 using System.Threading.Tasks;
 using Acme.BookStore.Authors;
 using Acme.BookStore.Permissions;
@@ -37,7 +37,7 @@ namespace Acme.BookStore.Books
             DeletePolicyName = BookStorePermissions.Books.Create;
         }
 
-        public override async Task<BookDto> GetAsync(Guid id)
+        public async override Task<BookDto> GetAsync(Guid id)
         {
             var book = await Repository.GetAsync(id);
             var bookDto = ObjectMapper.Map<Book, BookDto>(book);
@@ -48,7 +48,7 @@ namespace Acme.BookStore.Books
             return bookDto;
         }
 
-        public override async Task<PagedResultDto<BookDto>>
+        public async override Task<PagedResultDto<BookDto>>
             GetListAsync(PagedAndSortedResultRequestDto input)
         {
             //Set a default sorting, if not provided

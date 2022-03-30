@@ -3,6 +3,8 @@
 @using Volo.Abp.MultiTenancy
 @using global::Localization.Resources.AbpUi
 @inherits AbpComponentBase
+@inject ICurrentUser CurrentUser
+@inject ICurrentTenant CurrentTenant
 @inject IJSRuntime JsRuntime
 @inject NavigationManager Navigation
 @inject IStringLocalizer<AbpUiResource> UiLocalizer

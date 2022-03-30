@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Acme.BookStore.Permissions;
 using Microsoft.AspNetCore.Authorization;
@@ -22,7 +23,6 @@ namespace Acme.BookStore.Authors
             _authorManager = authorManager;
         }
 
-        //...SERVICE METHODS WILL COME HERE...
         public async Task<AuthorDto> GetAsync(Guid id)
         {
             var author = await _authorRepository.GetAsync(id);
@@ -89,5 +89,6 @@ namespace Acme.BookStore.Authors
         {
             await _authorRepository.DeleteAsync(id);
         }
+
     }
 }

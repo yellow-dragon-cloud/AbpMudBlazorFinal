@@ -9,8 +9,8 @@ public class BookStoreBlazorAutoMapperProfile : Profile
     public BookStoreBlazorAutoMapperProfile()
     {
         //Define your AutoMapper configuration here for the Blazor project.
-        CreateMap<BookDto, CreateUpdateBookDto>();
 
+        CreateMap<BookDto, CreateUpdateBookDto>();
         CreateMap<AuthorDto, UpdateAuthorDto>();
     }
 }

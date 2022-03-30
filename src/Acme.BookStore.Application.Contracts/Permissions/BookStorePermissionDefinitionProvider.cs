@@ -26,6 +26,7 @@ namespace Acme.BookStore.Permissions
 
             authorsPermission.AddChild(
                 BookStorePermissions.Authors.Delete, L("Permission:Authors.Delete"));
+
         }
 
         private static LocalizableString L(string name)

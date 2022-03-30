@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Acme.BookStore.Localization;
-using Acme.BookStore.Permissions;
 using Microsoft.Extensions.Configuration;
+using Acme.BookStore.Localization;
 using Volo.Abp.Account.Localization;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.UI.Navigation;
+using Acme.BookStore.Permissions;
 
 namespace Acme.BookStore.Blazor.Menus;
 
@@ -71,6 +71,7 @@ public class BookStoreMenuContributor : IMenuContributor
             ));
         }
     }
+
 
     private Task ConfigureUserMenuAsync(MenuConfigurationContext context)
     {

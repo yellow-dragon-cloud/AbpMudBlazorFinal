@@ -4,9 +4,9 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.Domain", "src\Acme.BookStore.Domain\Acme.BookStore.Domain.csproj", "{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.AspNetCore.Components.Web.BasicTheme", "packages\Volo.Abp.AspNetCore.Components.Web.BasicTheme\Volo.Abp.AspNetCore.Components.Web.BasicTheme.csproj", "{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.AspNetCore.Components.Web.BasicTheme", "packages\Volo.Abp.AspNetCore.Components.Web.BasicTheme\Volo.Abp.AspNetCore.Components.Web.BasicTheme.csproj", "{9F1A2FC5-5052-41B9-8BBF-E5FBBC67ACB4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme", "packages\Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme\Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme.csproj", "{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme", "packages\Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme\Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme.csproj", "{096D1286-ABE0-4427-B873-B39F153014BF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.Application", "src\Acme.BookStore.Application\Acme.BookStore.Application.csproj", "{1A94A50E-06DC-43C1-80B5-B662820EC3EB}"
 EndProject
@@ -50,14 +50,14 @@ Global
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F1A2FC5-5052-41B9-8BBF-E5FBBC67ACB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F1A2FC5-5052-41B9-8BBF-E5FBBC67ACB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F1A2FC5-5052-41B9-8BBF-E5FBBC67ACB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F1A2FC5-5052-41B9-8BBF-E5FBBC67ACB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{096D1286-ABE0-4427-B873-B39F153014BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{096D1286-ABE0-4427-B873-B39F153014BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{096D1286-ABE0-4427-B873-B39F153014BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{096D1286-ABE0-4427-B873-B39F153014BF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A94A50E-06DC-43C1-80B5-B662820EC3EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A94A50E-06DC-43C1-80B5-B662820EC3EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A94A50E-06DC-43C1-80B5-B662820EC3EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -120,8 +120,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
-		{A1F21AA3-0B37-4F2D-B2AC-D7AC41B73AC7} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
-		{0DDDF7C8-BFE5-42B7-881C-A3E69FA04062} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{9F1A2FC5-5052-41B9-8BBF-E5FBBC67ACB4} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{096D1286-ABE0-4427-B873-B39F153014BF} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{1A94A50E-06DC-43C1-80B5-B662820EC3EB} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{50B2631D-129C-47B3-A587-029CCD6099BC} = {04DBDB01-70F4-4E06-B468-8F87850B22BE}
 		{E3444355-D47E-431E-BDD0-DD3A7113B2AE} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
