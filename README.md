@@ -1069,7 +1069,9 @@ public partial class MudUserManagement
 
 ## Screenshots
 
+![image](images/screenshot5.png)
 
+![image](images/screenshot6.png)
 
 
 
