@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @inject IJSRuntime JsRuntime
 
-<MudThemeProvider />
+<MudThemeProvider @bind-IsDarkMode="_isDarkMode" />
 <MudSnackbarProvider />
 <MudDialogProvider />
 
@@ -13,6 +13,14 @@
             <Branding />
             <MudSpacer />
             <NavToolbar />
+            <div style="padding-inline-start: 16px;">
+                <MudToggleIconButton @bind-Toggled="@IsDarkMode"
+                                     Color="MudBlazor.Color.Inherit"
+                                     Size="MudBlazor.Size.Small"
+                                     ToggledSize="MudBlazor.Size.Small"
+                                     Icon="fas fa-moon"
+                                     ToggledIcon="fas fa-sun" />
+            </div>
         </MudAppBar>
         <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="8">
             <NavMenu />
@@ -31,6 +39,20 @@
 {
     private bool _drawerOpen = true;
     private bool _isRtl = false;
+    private bool _isDarkMode = false;
+
+    public bool IsDarkMode
+    {
+        get => _isDarkMode;
+        set
+        {
+            if (_isDarkMode == value) return;
+            _isDarkMode = value;
+            Task.Run(async () => await JsRuntime.InvokeVoidAsync(
+                "localStorage.setItem",
+                "Abp.MudBlazor.Theme", _isDarkMode ? "dark" : "light"));
+        }
+    }
 
     private void DrawerToggle()
     {
@@ -44,5 +66,10 @@
             "localStorage.getItem",
             "Abp.SelectedLanguage");
         _isRtl = selectedLanguageName.IsIn("ar"); // other RTL languages?
+
+        var selectedTheme = await JsRuntime.InvokeAsync<string>(
+            "localStorage.getItem",
+            "Abp.MudBlazor.Theme");
+        _isDarkMode = selectedTheme == "dark";
     }
 }
