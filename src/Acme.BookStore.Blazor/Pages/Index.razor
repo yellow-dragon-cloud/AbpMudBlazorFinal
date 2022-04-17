@@ -8,16 +8,16 @@
 
 <div class="container">
     <div class="p-5 text-center">
-        <Button onclick="@(async () => { await NotificationService.Success("Hello, World!"); await NotificationService.Warn("Something went wrong!"); })">
+        <MudButton OnClick="@(async () => { await NotificationService.Success("Hello, World!"); await NotificationService.Warn("Something went wrong!"); })">
             Show Notifications!
-        </Button>
+        </MudButton>
         <hr />
-        <Button onclick="@(() => { MessageService.Info("Hello, World!"); })">
+        <MudButton OnClick="@(() => { MessageService.Info("Hello, World!"); })">
             Show Info!
-        </Button>
+        </MudButton>
         <br />
-        <Button onclick="@(() => { throw new Exception(); })">
+        <MudButton OnClick="@(() => { throw new Exception(); })">
             Show Error!
-        </Button>
+        </MudButton>
     </div>
 </div>

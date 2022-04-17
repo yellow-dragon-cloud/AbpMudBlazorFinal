@@ -1,35 +1,75 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime JsRuntime
 
-<MudThemeProvider />
+<MudThemeProvider @bind-IsDarkMode="_isDarkMode" />
 <MudSnackbarProvider />
 <MudDialogProvider />
 
-<MudLayout>
-    <MudAppBar Elevation="8">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="MudBlazor.Color.Inherit" Edge="Edge.Start" 
-                       OnClick="@((e) => DrawerToggle())" />
-        <Branding />
-        <MudSpacer />
-        <NavToolbar />
-    </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="8">
-        <NavMenu />
-    </MudDrawer>
-    <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
-            <PageAlert />
-            @Body
-            <UiPageProgress />
-        </MudContainer>
-    </MudMainContent>
-</MudLayout>
+<MudRTLProvider RightToLeft="@_isRtl">
+    <MudLayout>
+        <MudAppBar Elevation="8">
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="MudBlazor.Color.Inherit" Edge="Edge.Start"
+                           OnClick="@((e) => DrawerToggle())" />
+            <Branding />
+            <MudSpacer />
+            <NavToolbar />
+            <div style="padding-inline-start: 16px;">
+                <MudToggleIconButton @bind-Toggled="@IsDarkMode"
+                                     Color="MudBlazor.Color.Inherit"
+                                     Size="MudBlazor.Size.Small"
+                                     ToggledSize="MudBlazor.Size.Small"
+                                     Icon="fas fa-moon"
+                                     ToggledIcon="fas fa-sun" />
+            </div>
+        </MudAppBar>
+        <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="8">
+            <NavMenu />
+        </MudDrawer>
+        <MudMainContent>
+            <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+                <PageAlert />
+                @Body
+                <UiPageProgress />
+            </MudContainer>
+        </MudMainContent>
+    </MudLayout>
+</MudRTLProvider>
 
-@code 
+@code
 {
     private bool _drawerOpen = true;
+    private bool _isRtl = false;
+    private bool _isDarkMode = false;
+
+    public bool IsDarkMode
+    {
+        get => _isDarkMode;
+        set
+        {
+            if (_isDarkMode == value) return;
+            _isDarkMode = value;
+            Task.Run(async () => await JsRuntime.InvokeVoidAsync(
+                "localStorage.setItem",
+                "Abp.MudBlazor.Theme", _isDarkMode ? "dark" : "light"));
+        }
+    }
 
     private void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var selectedLanguageName = await JsRuntime.InvokeAsync<string>(
+            "localStorage.getItem",
+            "Abp.SelectedLanguage");
+        _isRtl = selectedLanguageName.IsIn("ar"); // other RTL languages?
+
+        var selectedTheme = await JsRuntime.InvokeAsync<string>(
+            "localStorage.getItem",
+            "Abp.MudBlazor.Theme");
+        _isDarkMode = selectedTheme == "dark";
     }
 }
